@@ -1,8 +1,16 @@
 package main.java.myapp.persistence;
+import main.java.myapp.model.Book;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.myapp.model.Book;
+
+//package main.java.myapp.persistence;
+
+
+
+
+
 public class BookManager {
     private static BookManager instance;
     private List<Book> books;
@@ -29,7 +37,7 @@ public class BookManager {
         return books;
     }
 
-    private void saveBooks() {
+    public void saveBooks() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILENAME))) {
             for (Book book : books) {
                 writer.println(book.toCSV());

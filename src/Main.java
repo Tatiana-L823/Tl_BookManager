@@ -1,3 +1,6 @@
+import main.java.myapp.model.Book;
+import main.java.myapp.persistence.BookManager;
+
 import java.util.Scanner;
 
 public class Main {
@@ -39,6 +42,36 @@ public class Main {
         }
     }
 
+//    private static void addBook() {
+//        System.out.println("Neues Buch hinzufügen:");
+//        System.out.print("Titel: ");
+//        String title = scanner.nextLine();
+//        System.out.print("Autor: ");
+//        String author = scanner.nextLine();
+//        System.out.print("Genre: ");
+//        String genre = scanner.nextLine();
+//        System.out.print("Gelesen (true/false): ");
+//        boolean read = scanner.nextBoolean();
+//        scanner.nextLine(); // Leere den Scanner-Puffer
+//
+//        Book newBook1 = new Book("Sherlock Holmes", "Conan Doyle", "Detective stories", true);
+//        bookManager.addBook(newBook);
+//
+//        Book newBook2 = new Book("Thinking, Fast and Slow", "Daniel Kahneman", "populärwissenschaftliches Buch", false);
+//        bookManager.addBook(newBook);
+//
+//        Book newBook3 = new Book("Unschuldsengel vom Broadway", "O. Henry", "Kurzgeschichten", true);
+//        bookManager.addBook(newBook);
+//
+//        Book newBook4 = new Book("Harry Potter and the Order of the Phoenix", "J.K.Rowling", "Fantasy", false);
+//        bookManager.addBook(newBook);
+//
+//
+//        // Liste in CSV-Datei aktualisieren
+//        bookManager.saveBooks();
+//        System.out.println("Das Buch wurde erfolgreich hinzugefügt und die Bücherliste wurde aktualisiert!");
+//    }
+
     private static void addBook() {
         System.out.println("Neues Buch hinzufügen:");
         System.out.print("Titel: ");
@@ -51,21 +84,12 @@ public class Main {
         boolean read = scanner.nextBoolean();
         scanner.nextLine(); // Leere den Scanner-Puffer
 
-        Book newBook1 = new Book("Sherlock Holmes", "Conan Doyle", "Detective stories", true);
-        bookManager.addBook(newBook);
-
-        Book newBook2 = new Book("Thinking, Fast and Slow", "Daniel Kahneman", "populärwissenschaftliches Buch", false);
-        bookManager.addBook(newBook);
-
-        Book newBook3 = new Book("Unschuldsengel vom Broadway", "O. Henry", "Kurzgeschichten", true);
-        bookManager.addBook(newBook);
-
-        Book newBook4 = new Book("Harry Potter and the Order of the Phoenix", "J.K.Rowling", "Fantasy", false);
-        bookManager.addBook(newBook);
-
+        Book newBook = new Book(title, author, genre, read); // Neues Buchobjekt erstellen
+        bookManager.addBook(newBook); // Neues Buch zur Liste hinzufügen
 
         // Liste in CSV-Datei aktualisieren
         bookManager.saveBooks();
         System.out.println("Das Buch wurde erfolgreich hinzugefügt und die Bücherliste wurde aktualisiert!");
     }
+
 }
