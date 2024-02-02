@@ -10,33 +10,39 @@ import java.util.List;
 
 
 
-
+//Die BookManager-Klasse verwaltet die Persistenz von Büchern in einer CSV-Datei.
 public class BookManager {
+    // Singleton-Instanz des BookManagers
     private static BookManager instance;
     private List<Book> books;
     private static final String FILENAME = "books.csv";
 
+    // Privater Konstruktor für Singleton
     private BookManager() {
+        // Initialisiert die Bücherliste und lädt vorhandene Bücher aus der CSV-Datei
         books = new ArrayList<>();
         loadBooks();
     }
 
+    //Gibt die Singleton-Instanz des BookManagers zurück.
     public static BookManager getInstance() {
         if (instance == null) {
             instance = new BookManager();
         }
         return instance;
     }
-
+    //Fügt ein neues Buch zur Liste hinzu und speichert die Liste in der CSV-Datei.
     public void addBook(Book book) {
         books.add(book);
         saveBooks();
     }
 
+    //Gibt die Liste aller Bücher zurück.
     public List<Book> getBooks() {
         return books;
     }
 
+    //Speichert die Bücherliste in der CSV-Datei
     public void saveBooks() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILENAME))) {
             for (Book book : books) {
@@ -47,6 +53,7 @@ public class BookManager {
         }
     }
 
+    //Lädt Bücher aus der CSV-Datei und fügt sie der Bücherliste hinzu.
     private void loadBooks() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILENAME))) {
             String line;
@@ -60,7 +67,7 @@ public class BookManager {
                 books.add(book);
             }
         } catch (IOException e) {
-            // File does not exist or empty, do nothing
+            //  Die Datei existiert nicht oder ist leer, daher wird nichts unternommen
         }
     }
 }
